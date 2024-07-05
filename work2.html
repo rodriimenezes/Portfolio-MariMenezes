@@ -1,0 +1,310 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tropicarte</title>
+    <style>
+        @font-face {
+            font-family: galano;
+            src: url(assets/GalanoGrotesqueLight.otf);
+        }
+
+        @font-face {
+            font-family: galanoBold;
+            src: url(assets/GalanoGrotesqueBold.otf);
+        }
+
+        html, body {
+            margin: 0;
+            min-height: 100%;
+        }
+
+        * {
+            font-family: galano;
+            box-sizing: border-box;
+        }
+
+        .top-nav {
+            z-index: 999;
+            display: flex;
+            position: fixed;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            background: white;
+            color: black;
+            height: 100px;
+            width: 100%;
+            padding: 1em;
+            box-shadow: -2px 10px 71px -17px rgba(0,0,0,0.25);
+            -webkit-box-shadow: -2px 10px 71px -17px rgba(0,0,0,0.25);
+            -moz-box-shadow: -2px 10px 71px -17px rgba(0,0,0,0.25);
+        }
+
+        .logo{
+            height: 100px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu > li > a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .menu > li {
+            margin: 0 1rem;
+            overflow: hidden;
+        }
+
+        .menu-button-container {
+            display: none;
+            height: 100%;
+            width: 30px;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-button,
+        .menu-button::before,
+        .menu-button::after {
+            display: block;
+            background-color: black;
+            position: absolute;
+            height: 4px;
+            width: 30px;
+            transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+            border-radius: 2px;
+        }
+
+        .menu-button::before {
+            content: '';
+            margin-top: -8px;
+        }
+
+        .menu-button::after {
+            content: '';
+            margin-top: 8px;
+        }
+
+        #menu-toggle:checked + .menu-button-container .menu-button::before {
+            margin-top: 0px;
+            transform: rotate(405deg);
+        }
+
+        #menu-toggle:checked + .menu-button-container .menu-button {
+            background: rgba(255, 255, 255, 0);
+         }
+
+        #menu-toggle:checked + .menu-button-container .menu-button::after {
+            margin-top: 0px;
+            transform: rotate(-405deg);
+        }
+
+        .banner img{
+            width: 100%;
+            height: 35%;
+            object-fit: cover;
+            object-position: 0 55%;
+        }
+
+        .banner h1{
+            font-family: galanoBold;
+            font-size: 72px;
+            color: black;
+            text-align: center;
+        }
+
+        .text p{
+            text-align: center;
+            margin-top: -32px;
+            padding: 0 32px;
+        }
+
+        .photos{
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .column{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 16px;
+        }
+
+        .column img{
+            width: 400px;
+            overflow: hidden;
+        }
+
+        .column video{
+            width: 400px;
+        }
+
+        .footer{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            background-color: black;
+            color: white;
+            overflow: hidden;
+            width: 100%;
+            top: 100%;
+        }
+
+        .footer ul li{
+            list-style-type: none;
+            text-align: center;
+            padding-bottom: 16px;
+            padding-top: 16px;
+        }
+
+        .footer ul li a{
+            text-decoration: none;
+            color: white;
+        }
+
+        @media (max-width: 900px) {
+            .top-nav, .logo{
+                height: 50px;
+            }
+            .menu-button-container {
+                display: flex;
+            }
+            .menu {
+                position: absolute;
+                top: 0;
+                margin-top: 50px;
+                left: 0;
+                flex-direction: column;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+            #menu-toggle ~ .menu li {
+                height: 0;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+            #menu-toggle:checked ~ .menu li {
+                border: 1px solid #d2d2d2;
+                height: 2.5em;
+                padding: 0.5em;
+                transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+            .menu > li {
+                display: flex;
+                justify-content: center;
+                margin: 0;
+                padding: 0.5em 0;
+                width: 100%;
+                color: black;
+                background-color: white;
+            }
+            .menu > li:not(:last-child) {
+                border-bottom: 1px solid #444;
+            }
+
+            .photos{
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0;
+            }
+
+            .column{
+                padding: 6px;
+            }
+
+            .footer ul li{
+                padding: 0;
+                font-size: 11px;
+            }
+            
+            .banner h1{
+                width: 150%;
+                scale: 65%;
+                align-items: center;
+                margin-left: -25%;
+                margin-top: -1px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <section class="top-nav">
+            <div>
+            <a href="index.html"><img src="assets/m-logo.png" alt="logo" class="logo"></a>
+            </div>
+            <input id="menu-toggle" type="checkbox" />
+            <label class='menu-button-container' for="menu-toggle">
+                <div class='menu-button'></div>
+            </label>
+            <ul class="menu">
+                <li><a href="work.html">Estampas</a></li>
+                <li><a href="art.html">Arte</a></li>
+                <li><a href="about.html">Sobre Mim</a></li>
+                <li><a href="contact.html">Contato</a></li>
+            </ul>
+        </section>
+        <main class="body_work">
+            <div class="banner">
+                <img src="assets/works/Amazonia-chic-white.jpg" alt="Amazonia-chic-dark">
+                <h1>Amazonia Chic</h1>
+            </div>
+            <div class="text">
+                <p>A estampa Amazônia Chic foi criada para a coleção Inverno '24 da FARM Rio digitalmente, com elementos artesanais. <br> Parecendo que foi toda bordada à mão, cada detalhe dessa estampa foi feito com delicadeza para trazer elementos da nossa Amazônia: <br> Onça, Jacaré, Macacos, Vitória Régia, Borboleta, Sapo, entre outros dessa fauna e flora tão linda.
+                </p>
+            </div>
+            <div class="photos">
+                <div class="column">
+                    <img src="assets/works/amazonia-chic/FARM_1564.jpg" alt="">
+                    <video src="assets/works/amazonia-chic/RPReplay_Final1719833841.mov" loop autoplay muted></video>
+
+                </div>
+                <div class="column">
+                    <img src="assets/works/amazonia-chic/FARM_1606 (1).jpg" alt="">
+                    <img src="assets/works/amazonia-chic/FARM_1584.jpg" alt="">
+                </div>
+                <div class="column">
+                    <img src="assets/works/amazonia-chic/image (94).png" alt="">
+                    <img src="assets/works/amazonia-chic/FARM_1722 2 (1).jpg" alt="">
+                </div>
+
+            </div>
+        </main>
+        <section>
+            <footer class="footer">
+                <ul class="footer_content">
+                    <li>menezes.marii@gmail.com</li>
+                    <li><a href="#">Instagram</a></li>
+                    <li>Todos os direitos reservados à Mariana menezes</li>
+                </ul>
+            </footer>
+        </section>
+    </div>
+</body>
+</html>

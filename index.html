@@ -1,0 +1,335 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/m-logo.png" type="image/x-icon">
+    <title>Mari Menezes</title>
+    <style>
+        @font-face {
+            font-family: galano;
+            src: url(assets/GalanoGrotesqueLight.otf);
+        }
+
+        @font-face {
+            font-family: galanoBold;
+            src: url(assets/GalanoGrotesqueBold.otf);
+        }
+
+        html, body {
+            margin: 0;
+            min-height: 100%;
+        }
+
+        * {
+            font-family: galano;
+            box-sizing: border-box;
+        }
+
+        .page{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .top-nav {
+            z-index: 999;
+            display: flex;
+            position: fixed;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            background: white;
+            color: black;
+            height: 100px;
+            width: 100%;
+            padding: 1em;
+            box-shadow: -2px 10px 71px -17px rgba(0,0,0,0.25);
+            -webkit-box-shadow: -2px 10px 71px -17px rgba(0,0,0,0.25);
+            -moz-box-shadow: -2px 10px 71px -17px rgba(0,0,0,0.25);
+        }
+
+        .logo{
+            height: 100px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu > li > a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .menu > li {
+            margin: 0 1rem;
+            overflow: hidden;
+        }
+
+        .menu-button-container {
+            display: none;
+            height: 100%;
+            width: 30px;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-button,
+        .menu-button::before,
+        .menu-button::after {
+            display: block;
+            background-color: black;
+            position: absolute;
+            height: 4px;
+            width: 30px;
+            transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+            border-radius: 2px;
+        }
+
+        .menu-button::before {
+            content: '';
+            margin-top: -8px;
+        }
+
+        .menu-button::after {
+            content: '';
+            margin-top: 8px;
+        }
+
+        #menu-toggle:checked + .menu-button-container .menu-button::before {
+            margin-top: 0px;
+            transform: rotate(405deg);
+        }
+
+        #menu-toggle:checked + .menu-button-container .menu-button {
+            background: rgba(255, 255, 255, 0);
+         }
+
+        #menu-toggle:checked + .menu-button-container .menu-button::after {
+            margin-top: 0px;
+            transform: rotate(-405deg);
+        }
+
+        .body{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            height: fit-content;
+            margin: 0;
+        }
+
+        .photo{
+            width: 50%;
+            overflow: hidden;
+        }
+
+        .img1{
+            display: block;
+            margin-top: 100px;
+            height: 629.833px;
+            object-fit: cover;
+        }
+
+        .text{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            row-gap: 36px;
+            align-items: center; 
+            height: fit-content;
+            margin-top: 100px;
+            width: 50%;
+        }
+
+        .text h1{
+            font-family: galanoBold;
+            font-size: 56px;   
+            text-align: center;
+        }
+
+        .text p:first-of-type{
+            font-size: large;
+            text-align: center;
+            padding: 0 32px;
+            margin-top: -50px;
+            display: none;
+        }
+
+        .ingles{
+            font-size: large;
+            text-align: center;
+            padding: 32px;
+            margin-top: -32px;
+            display: flex;
+        }
+
+        .button{
+            background-color: black;
+            color: white;
+            border: 0;
+            width: 200px;
+            text-align: center;
+            padding: 16px;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+
+        .button:hover{
+            transition: all 0.15s;
+            scale: 105%;
+            opacity: 0.75;
+        }
+
+        .footer{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            background-color: black;
+            color: white;
+            overflow: hidden;
+            width: 100%;
+            top: 100%;
+        }
+
+        .footer ul li{
+            list-style-type: none;
+            text-align: center;
+            padding-bottom: 16px;
+            padding-top: 16px;
+        }
+
+        .footer ul li a{
+            text-decoration: none;
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+            .page{
+                display: flex;
+                flex-direction: column;
+            }
+            .top-nav, .logo{
+                height: 50px;
+            }
+            .menu-button-container {
+                display: flex;
+            }
+            .menu {
+                position: absolute;
+                top: 0;
+                margin-top: 50px;
+                left: 0;
+                flex-direction: column;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+            #menu-toggle ~ .menu li {
+                height: 0;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+            #menu-toggle:checked ~ .menu li {
+                border: 1px solid #d2d2d2;
+                height: 2.5em;
+                padding: 0.5em;
+                transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+            .menu > li {
+                display: flex;
+                justify-content: center;
+                margin: 0;
+                padding: 0.5em 0;
+                width: 100%;
+                color: black;
+                background-color: white;
+            }
+            .menu > li:not(:last-child) {
+                border-bottom: 1px solid #444;
+            }
+                
+            .body{
+                display: flex;
+                flex-direction: column;
+            }
+            .text{
+                width: 100%;
+                height: fit-content;
+            }
+            .photo{
+                width: 100%;
+                padding-top: 32px;
+            }
+            .img1{
+                width: 100%;
+                height: 500px;
+                overflow: hidden;
+            }
+            .footer ul li{
+                padding: 0;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <section class="top-nav">
+            <div>
+            <img src="assets/m-logo.png" alt="logo" class="logo">
+            </div>
+            <input id="menu-toggle" type="checkbox" />
+            <label class='menu-button-container' for="menu-toggle">
+                <div class='menu-button'></div>
+            </label>
+            <ul class="menu">
+                <li><a href="work.html">Estampas</a></li>
+                <li><a href="art.html">Arte</a></li>
+                <li><a href="about.html">Sobre Mim</a></li>
+                <li><a href="contact.html">Contato</a></li>
+            </ul>
+        </section>
+        <main class="body">
+            <div class="text">
+                <h1>Olá!</h1>
+                <p>Aqui é a Mari Menezes!<br>
+                    Sou designer e ilustradora carioca. <br> Me inspiro na natureza, nas diversas texturas, cores e culturas do Brasil. <br> Pra mim, a arte e o design são tão emocionantes que podem contar novas histórias! Vamos contar mais uma?</p>
+                <p class="ingles">
+                    Mari Menezes here :) <br>
+                    As a designer and ilustrator born in Rio de Janeiro, I've always lived fluidly in various areas of art. I'm always inspiring myself in the nature, in the diferent textures, colors and cultures of Brazil and I want my work to touch diferent people. I understand that art and design have a significant role and, with that, we can tell new stories! <br>
+                    Let's tell another one?
+                </p>
+                <a href="contact.html" class="button">vem fazer arte</a>
+            </div>
+            <div class="photo">
+                <img src="assets/WhatsApp Image 2024-06-24 at 21.35.48.jpeg" alt="Imagem Mari Menezes" class="img1">
+            </div>
+        </main>
+        <section>
+            <footer class="footer">
+                <ul class="footer_content">
+                    <li>menezes.marii@gmail.com</li>
+                    <li><a href="#">Instagram</a></li>
+                    <li>Todos os direitos reservados à Mariana menezes</li>
+                </ul>
+            </footer>
+        </section>
+    </div>
+</body>
+</html>
