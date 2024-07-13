@@ -24,6 +24,10 @@
             box-sizing: border-box;
         }
 
+        .page{
+            width: 100%;
+        }
+
         .top-nav {
             z-index: 999;
             display: flex;
@@ -163,7 +167,7 @@
         .column{
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            row-gap: 16px;
             padding: 16px;
         }
         
@@ -271,6 +275,7 @@
         @media (max-width: 900px) {
             .top-nav, .logo{
                 height: 50px;
+                width: 100%;
             }
             .menu-button-container {
                 display: flex;
@@ -318,8 +323,13 @@
                 padding: 0;
             }
 
-            .column{
-                padding: 6px;
+            .column img{
+                width: 100%;
+                align-items: center;
+            }
+
+            .column video{
+                width: 100%;
             }
 
             .footer ul li{
@@ -333,6 +343,15 @@
                 align-items: center;
                 margin-left: -25%;
                 margin-top: -1px;
+            }
+
+            .banner img{
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .see_more{
+                display: none;
             }
 
         }
