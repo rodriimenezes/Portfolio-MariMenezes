@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/m-logo.png" type="image/x-icon">
+    <script src="assets/js/loading.js"></script>
     <title>Mari Menezes</title>
     <style>
         @font-face {
@@ -26,7 +27,7 @@
         }
 
         .page{
-            display: flex;
+            display: none;
             flex-direction: column;
             justify-content: space-between;
             width: 100%;
@@ -303,8 +304,11 @@
         }
     </style>
 </head>
-<body>
-    <div class="page">
+<body onload="myFunc()">
+    <div id="load" style="height: 100%; display: flex; align-items: center; justify-content: center;">
+        <img src="assets/M-LOGO-ANIMADA.gif" alt="Carregando" style="width: 100px;">
+    </div>
+    <div class="page" id="page">
         <section class="top-nav">
             <div>
             <img src="assets/m-logo.png" alt="logo" class="logo">

@@ -18,8 +18,13 @@ html, body {
   box-sizing: border-box;
 }
 
-.page{
+#load{
   display: flex;
+
+}
+
+.page{
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
