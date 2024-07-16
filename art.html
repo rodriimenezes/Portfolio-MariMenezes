@@ -4,9 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arte</title>
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="shortcut icon" href="assets/m-logo.png" type="image/x-icon">
+    <script src="assets/js/loading.js"></script>
 </head>
-<body>
-    <div class="page">
+<body onload="loading()">
+    <div id="load" style="height: 100%; display: flex; align-items: center; justify-content: center;">
+        <img src="assets/M-LOGO-ANIMADA.gif" alt="Carregando" style="width: 100px;">
+    </div>
+    <div class="page" id="page">
         <section class="top-nav">
             <div>
             <a href="index.html"><img src="assets/m-logo.png" alt="logo" class="logo"></a>
@@ -22,6 +27,17 @@
                 <li><a href="contact.html">Contato</a></li>
             </ul>
         </section>
+        <main class="body">
+            <div class="text">
+                <h1>Minha Arte<br><br></h1>
+            <div style="display: grid; grid-template-columns: auto auto auto; margin-top: -132px; gap: 16px; padding: 32px;">
+                <video src="assets/arts/1.mp4" autoplay muted loop style="width: 400px;"></video>
+                <video src="assets/arts/2.mp4" autoplay muted loop style="width: 400px;"></video>
+                <video src="assets/arts/3.mp4" autoplay muted loop style="width: 400px;"></video>
+                <video src="assets/arts/4.mp4" autoplay muted loop style="width: 400px;"></video>
+                <video src="assets/arts/5.mp4" autoplay muted loop style="width: 400px;"></video>
+            </div>
+        </main>
         <section>
             <footer class="footer">
                 <ul class="footer_content">
