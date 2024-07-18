@@ -415,6 +415,10 @@ html, body {
       grid-template-columns: auto;
     }
     
+    .body > div > video{
+      width: 200px;
+    }
+
     .grid_item{
       width: 300px;
       height: fit-content;
